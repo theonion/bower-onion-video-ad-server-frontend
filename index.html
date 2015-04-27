@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="video-ads-dev">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Onion Video Ad Server</title>
+        <!-- Stylesheets -->
+        <!-- Date range picker -->
+        <link rel="stylesheet" href="css/app.css" media="all">
+
+        <!-- VideoJS -->
+
+        <!-- Base href For Angular Routes -->
+        <base href="/">
+    </head>
+	<body>
+
+    <!-- The View -->
+    <nav-bar></nav-bar>
+	<div class="container-fluid on-fade" ng-view>
+	</div>
+    <!-- Vendor Dependencies -->
+    <script src="js/vendor.min.js"></script>
+
+
+    <script>
+      videojs.options.flash.swf = 'bower_components/videojs/dist/video-js/video-js.swf';
+    </script>
+
+    <!-- Mocks -->
+		<script src="../bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="../bower_components/angular-scenario/angular-scenario.js"></script>
+    <script type="text/javascript" src="mocks/app.js"></script>
+    <script type="text/javascript" src="mocks/mock-data.js"></script>
+    <script type="text/javascript" src="mocks/api.js"></script>
+		<!-- end Mocks -->
+
+		<script src="js/app.min.js"></script>
+
+
+
+    <script type="text/javascript">
+        angular.module('video-ads-dev', ['video-ads', 'video-ads.mockApi'])
+				.config(function($sceProvider){
+			    $sceProvider.enabled(false);
+			  });
+
+				angular.module('video-ads')
+					.constant('logoUrl', 'static/images/logo-white.png')
+					.constant('placeholderUrl', 'static/images/placeholder.jpg');
+    </script>
+	</body>
+</html>
